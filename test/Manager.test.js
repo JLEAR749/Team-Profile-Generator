@@ -17,5 +17,5 @@ describe("Manager", () => {
 
       expect(obj.getOfficeNumber()).toEqual(201);
     });
-})
+  })
 })

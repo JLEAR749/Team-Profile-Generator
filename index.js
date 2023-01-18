@@ -1,47 +1,59 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
+
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
-const generateHTML = require('./lib/generateHTML.js');
-const fs = require('fs');
-const open = require("open");
+const team = require('./src/generateHTML.js');
+const OUTPUT_DIR = path.resolve(_dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
+const generateTeam = require('./src/generateHTML');
 
-const team = [generateHTML.header(), generateHTML.footer()];
+const teamArray = [];
 
-function managerStart() {
-    return inquirer.prompt([
-        {
-            type: "input",
-            name: "name",
-            message: "What is your manager's name?"
-        },
-        {
-            ype: "input",
-            name: "id",
-            message: "What is your manager's ID?"
-        },
-        {
-            ype: "input",
-            name: "email",
-            message: "What is your manager's email?"
-        },
-        {
-            ype: "input",
-            name: "officeNumber",
-            message: "What is your manager's office number?"
-        }
-    ])
+function runApp() {
+
+    function managerStart() {
+        inquirer.prompt([
+            {
+                type: "input",
+                name: "name",
+                message: "What is your manager's name?"
+            },
+            {
+                type: "input",
+                name: "id",
+                message: "What is your manager's ID?"
+            },
+            {
+                type: "input",
+                name: "email",
+                message: "What is your manager's email?"
+            },
+            {
+                type: "input",
+                name: "officeNumber",
+                message: "What is your manager's office number?"
+            }
+
+        ]).then(data => {
+            const manager = new Manager(data.managerName, data, data.managerId, data.managerEmail, data.managerOfficeNumber);
+            teamArray.push(manager);
+            createTeam();
+        });
+    }
 }
 
 function teamProfile() {
-    inquirer.prompt([
+    return inquirer.prompt([
+
         {
             type: "list",
             name: "role",
             message: "Who would you like to add to your team?",
             choices: ["Engineer", "Intern", "Exit and Open"]
         }
-    ]).then((data) => {
+    ]).then(data => {
         if (data.role === "Engineer") {
             return inquirer.prompt([
                 {
@@ -65,58 +77,46 @@ function teamProfile() {
                     message: "What is your engineer's GitHub?"
                 },
             ]).then((data) => {
-                let engineer = new Engineer(data.name, data.id, data.email, data.github);
+                const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGitHub);
                 team.splice(team.length - 1, 0, engineer.getHTML());
                 teamProfile();
             })
         }
-        if (data.role === "Intern"){
-            return inquirer.prompt([
-                {
-                    type: "input",
-                    name: "name",
-                    message: "What is your intern's name?"
-                },
-                {
-                    type: "input",
-                    name: "id",
-                    message: "What is your intern's ID?"
-                },
-                {
-                    type: "input",
-                    name: "email",
-                    message: "What is your intern's email?"
-                },
-                {
-                    type: "input",
-                    name: "github",
-                    message: "What is your intern's school?"
-                }
-            ]).then((data) => {
-                let intern = new Intern(data.name, data.id, data.email, data.school);
-                team.splice(team.length - 1, 0, intern.getHTML());
-                teamProfile();
-            }) 
-        }
-        return printHTML(team);
     });
-}
+    if (data.role === "Intern") {
+        return inquirer.prompt([
+            {
+                type: "input",
+                name: "name",
+                message: "What is your intern's name?"
+            },
+            {
+                type: "input",
+                name: "id",
+                message: "What is your intern's ID?"
+            },
+            {
+                type: "input",
+                name: "email",
+                message: "What is your intern's email?"
+            },
+            {
+                type: "input",
+                name: "github",
+                message: "What is your intern's school?"
+            }
+        ]).then((data) => {
+            const intern = new Intern(data.internnName, data.internId, data.InternEmail, data.InternSchool);
+            team.splice(team.length - 1, 0, intern.getHTML());
+            teamProfile();
+        })
+    }
+    function generateHTML() {
+        console.log("Team created!")
 
-function printHTML(team){
-    fs.writeFile("team.html", team.tostring(), (err)=> {
-        if (err) {
-            throw err;
-        };
-        console.log("Creating team. Loading...");
-    });
-        setTimeout(() => {
-        open("Team.html");
-        console.log("Your team has been created!");
-        }, "1500")
-        };
-managerStart()
-.then((data)=>{
-    const manager = new Manager(data.name, data.id, data.email, data.officeNumber);
-    team.splice(team.length-1, 0, manager.getHTML());
-    teamProfile();
-});
+        fs.writeFileSync(outputPath, generateHTML(teamArray), "utf-8")
+    }
+
+    createReadStream();
+}
+runApp();
