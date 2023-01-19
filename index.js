@@ -1,26 +1,28 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
-const {Manager, managerQuestionArr} = require('./lib/Manager');
-const {Engineer, engineerQuestionArr} = require('./lib/Engineer.js');
-const {Intern, internQuestionArr} = require('./lib/Intern.js');
-const teamArray = [];
-const template = require('./src/generateHTML');
+const generateHTML = require('./src/generateHTML')
+const writeFile = require('./src/write-file')
 
-const teamArrary = []
+const { Manager, managerQuestionArr } = require('./lib/Manager');
+const { Engineer, engineerQuestionArr } = require('./lib/Engineer.js');
+const { Intern, internQuestionArr } = require('./lib/Intern.js');
+
+const teamArray = []
 
 const init = () => { managerQuestions() }
+
 const managerQuestions = () => {
     inquirer.prompt(managerQuestionArr)
-        .then((data) => {
+        .then((results) => {
             results = new Manager(results.name, results.id, results.email, results.officeNumber)
             teamArray.push(results);
             return employeePrompt();
         })
 }
+
 const engineerQuestions = () => {
     inquirer.prompt(engineerQuestionArr)
         .then((results) => {
-            results = new Engineer(results.name, results.id, results.email, results.GitHub);
+            results = new Engineer(results.name, results.id, results.email, results.GitHub)
             teamArray.push(results);
             return employeePrompt();
         })
@@ -28,9 +30,9 @@ const engineerQuestions = () => {
 
 const internQuestions = () => {
     inquirer.prompt(internQuestionArr)
-        .then((data) => {
-            results = new Intern(results.name, results.id, results.email, results.school);
-            teamArray.push(data);
+        .then((results) => {
+            results = new Intern(results.name, results.id, results.email, results.school)
+            teamArray.push(results);
             return employeePrompt();
         })
 }
@@ -47,11 +49,11 @@ const employeePrompt = () => {
         ]
     }])
         .then(result => {
-            if (result.employeeType === "addEngineer") { engineerQuestionsArr(); };
-            if (result.employeeType === "addIntern") { internQuestionsArr(); };
+            if (result.employeeType === "addEngineer") { engineerQuestions(); };
+            if (result.employeeType === "addIntern") { internQuestions(); };
             if (result.employeeType === "complete") {
-                let HTML = template(teamArray)
-                console.log("...")
+                let HTML = generateHTML(teamArray)
+                console.log("teamArray")
                 writeFile(HTML);
             }
         })

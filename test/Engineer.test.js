@@ -1,6 +1,6 @@
 const {Engineer} = require("../lib/Engineer");
 
-it ('Creates a new Engineer', ()=> {
+it ('Create a new Engineer', ()=> {
   const employee = new Engineer('Mary Doe', 1, 'Mary.Doe@gmail.com','mary-doe');
 
   expect (employee.name).toBe("Mary Doe");

@@ -1,78 +1,132 @@
-const { template } = require("@babel/core")
-const { moduleExpression } = require("@babel/types")
-const { json } = require("stream/consumers")
-const { Engineer } = require("../lib/Engineer")
+// < !DOCTYPE html >
+//     <html lang="en">
+//         <head>
+//             <meta charset="UTF-8" />
+//             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+//             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+//             <link rel="stylesheet" href="../dist/styles.css" />
+//             <title>Team Profile Generator</title>
+//         </head>
+//         <body>
+//             <header>
+//                 <h1>My Team</h1>
+//             </header>
+//             <main>
+//                 <div id="team-container">
+//                     <div id="employee-card">
+//                         <div id="head-container">
+//                             <div id="card-head">
+//                                 <h3></h3>
+//                                 <div id="role">
+//                                     <img
+//                                         src="../dist/images/manager-icon.png"
+//                                         alt="Icon of a coffee cup"
+//                                     />
+//                                     <h4>Manager</h4>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                         <div id="card-body">
+//                             <div id="body-container">
+//                                 <p id="ID">ID: </p>
+//                                 <hr />
+//                                 <p id="body-email">
+//                                     <a href="mailto:"></a>
+//                                 </p>
+//                                 <hr />
+//                                 <p id="body-info">Office Number: </p>
+//                             </div>
+//                         </div>
+//                     </div>
+//                     <div id="employee-card">
+//                         <div id="head-container">
+//                             <div id="card-head">
+//                                 <h3>Bob</h3>
+//                                 <div id="role">
+//                                     <img
+//                                         src="../dist/images/engineer-icon.png"
+//                                         alt="Icon of a gear"
+//                                     />
+//                                     <h4>Engineer</h4>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                         <div id="card-body">
+//                             <div id="body-container">
+//                                 <p id="ID">ID: 555</p>
+//                                 <hr />
+//                                 <p id="body-email">
+//                                     <a href="mailto:"></a>
+//                                 </p>
+//                                 <hr />
+//                                 <p id="body-info">
+//                                     <a
+//                                         href="https://github.com/"
+//                                         target="_blank"
+//                                         rel="noopener noreferrer"
+//                                     >Github link</a>
+//                                 </p>
+//                             </div>
+//                         </div>
+//                     </div> <div id="employee-card">
+//                         <div id="head-container">
+//                             <div id="card-head">
+//                                 <h3>Joe</h3>
+//                                 <div id="role">
+//                                     <img
+//                                         src="../dist/images/engineer-icon.png"
+//                                         alt="Icon of a gear"
+//                                     />
+//                                     <h4>Engineer</h4>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                         <div id="card-body">
+//                             <div id="body-container">
+//                                 <p id="ID">ID: </p>
+//                                 <hr />
+//                                 <p id="body-email">
+//                                     <a href="mailto:Joe@gmail.com"></a>
 
-// Manager Card 
-const manager = managerData => {
-    return `
-    <div id=${managerData.getRole()}
-        <div class = box name- role manager-name">
-        <h2>${managerData.getName()}/h2>
-        <h3> Role: ${managerData.getRole()}</h3>
-    </div>
-    <div class = "box employee- info">
-        <ul class= "list-group">
-            <li class = "list-group-item"> ID: ${managerData.getId()}</li>
-            <li class = "list-group-item"> Email: <a href="mailto:${managerData.getEmail()}">${managerData.getEmail()}</a></li>
-            <li class = "list-group-item"> Office Number: ${managerData.getOfficeNumber()}</li>
-        </ul>
-    </div>
- </div>
-`
-}
+//                                 <p id="body-info"></p>
+//                                     <a
+//                                         href="https://github.com/apple"
+//                                         target="_blank"
+//                                         rel="noopener noreferrer"
+//                                     >Github link</a
+//                                     >
+//                                 </p>
+//                             </div>
+//                         </div>
+//                     </div>
+//                     <div id="employee-card">
+//                         <div id="head-container">
+//                             <div id="card-head">
+//                                 <h3></h3>
+//                                 <div id="role">
+//                                     <img
+//                                         src="../dist/images/intern-icon.png"
+//                                         alt="Icon of a graduation hat"
+//                                     />
+//                                     <h4>Intern</h4>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                         <div id="card-body">
+//                             <div id="body-container">
+//                                 <p id="ID">ID:</p>
+//                                 <hr />
+//                                 <p id="body-email">
+//                                     <a href="mailto:"></a>
+//                                 </p>
+//                                 <hr />
+//                                 <p id="body-info">School: </p>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </main>
+//         </body>
+//     </html>
 
-//Engineer Card
-const engineer = engineerData => {
-    return `
-    <div id=${engineerData.getRole()}
-        <div class = box name- role engineer-name">
-        <h2>${engineerData.getName()}/h2>
-        <h3> Role: ${engineerData.getRole()}</h3>
-    </div>
-    <div class = "box employee- info">
-        <ul class= "list-group">
-            <li class = "list-group-item"> ID: ${engineerData.getId()}</li>
-            <li class = "list-group-item"> Email: <a href="mailto:${engineerData.getEmail()}">${engineerData.getEmail()}</a></li>
-            <li class = "list-group-item"> Github: ${engineerData.getGitHub()}"target="_blank">www.github.com/${engineerData.getGitHub()}</li>
-        </ul>
-    </div>
- </div>
-`
-}
 
-// Intern Card
-const intern = internData => {
-    return `
-    <div id=${internData.getRole()}
-        <div class = box name- role intern-name">
-        <h2>${internData.getName()}/h2>
-        <h3> Role: ${internData.getRole()}</h3>
-    </div>
-    <div class = "box employee- info">
-        <ul class= "list-group">
-            <li class = "list-group-item"> ID: ${internData.getId()}</li>
-            <li class = "list-group-item"> Email: <a href="mailto:${internData.getEmail()}">${internData.getEmail()}</a></li>
-            <li class = "list-group-item"> Office Number: ${internData.getSchool()}</li>
-        </ul>
-    </div>
- </div>
-`
-}
-
-const employeeDiv = teamArr => {
-    const employeeHTML = ""
-
-    for (i = 0; i < teamArr.length; i++) {
-        if (teamArr[i].getRole() === "Manager") {
-            employeeHTML = employeeHTML + manager(teamArr[i])
-        }
-        if (teamArr[i].getRole() === "Engineer") {
-            employeeHTML = employeeHTML + engineer(teamArr[i])
-        }
-        if (teamArr[i].getRole() === "Intern") {
-            employeeHTML = employeeHTML + intern(teamArr[i])
-        }
-    } return employeeHTML
-}
-module.exports = template;
