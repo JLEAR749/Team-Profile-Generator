@@ -1,3 +1,5 @@
+const { template } = require("@babel/core")
+const { moduleExpression } = require("@babel/types")
 const { json } = require("stream/consumers")
 const { Engineer } = require("../lib/Engineer")
 
@@ -73,8 +75,4 @@ const employeeDiv = teamArr => {
         }
     } return employeeHTML
 }
-
-// const template = data => {
-//     return `
-
 module.exports = template;

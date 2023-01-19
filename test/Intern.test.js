@@ -1,18 +1,20 @@
 const {Intern} = require("../lib/Intern");
 
-describe("Object", () => {
-    it("creates a intern object", () => {
-      const intern = new Intern("Jane Doe ", 466, "Jane.Doe@gmail.com", "University of Minnesota");
-      expect("name" in intern).toEqual(true);
-    })
-      
-    it("'id' should be a number", () => {
-      const obj = new Intern("Jane Doe", 466, "Jane.Doe@gmail.com", "University of Minnesota");
-      expect(obj.id).toEqual(466);
-    });
-    it("getSchool method should return a string", () => {
-      const obj = new Intern("Jane Doe", 466, "Jane.Doe@gmail.com", "University of Minnesota");
+it ('Creates a new Intern', ()=> {
+  const employee = new Intern('Calvin Doe', 1, 'Calvin.Doe@gmail.com','University of Minnesota');
 
-      expect(obj.getSchool()).toEqual("University of Minnesota");
-    });
-  });
+  expect (employee.name).toBe("Calvin Doe");
+  expect (employee.id).toEqual (expect.any(Number));
+  expect (employee.email).toEqual(expect.any(String));
+  expect (employee.school).toEqual(expect.any(String));
+})
+
+it ('checks all methods for Manager Class', () => {
+  const employee = new Intern('Calvin Doe', 1, 'Calvin.Doe@gmail.com','393');
+
+  expect (employee.getName()).toBe(employee.name);
+  expect (employee.getId()).toBe(employee.id);
+  expect (employee.getEmail()).toBe(employee.email);
+  expect (employee.getSchool()).toBe(employee.school);
+  expect(employee.getRole()).toBe('Intern');
+})
