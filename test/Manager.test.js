@@ -1,21 +1,21 @@
-const Manager = require("../lib/Manager");
+const {Manager} = require("../lib/Manager");
 
-describe("Manager", () => {
-  describe("Initialization", () => {
-    it("should return an object containing a 'officeNumber' property when called with the 'new' keyword", () => {
-      const obj = new Manager();
+describe("Object", () => {
+  
+  
+  it("'officeNumber' should be a number", () => {
+    const obj = new Manager("John Doe", 1, "John.Doe@gmail.com", 393);
+    expect(obj.officeNumber).toEqual(393);
+  });
 
-      expect("officeNumber" in obj).toEqual(true);
-    });
-    it("'officeNumber' should be a number", () => {
-      const obj = new Manager(1, "John Doe", "JD@gmail.com", 201);
+  it("getOfficeNumber method should return a number", () => {
+    const obj = new Manager("John Doe", 1, "John.Doe@gmail.com", 393);
+  
+    expect(obj.getOfficeNumber()).toEqual(393);
+  });
+  it("should be a number", () => {
+    const obj = new Manager("John Doe", 1, "John.Doe@gmail.com");
 
-      expect(obj.officeNumber).toEqual(201);
-    });
-    it("getOfficeNumber method should return a number", () => {
-      const obj = new Manager(1, "John Doe", "JD@gmail.com", 201);
-
-      expect(obj.getOfficeNumber()).toEqual(201);
-    });
+    expect(obj.email).toEqual("John.Doe@gmail.com");
+  });
   })
-})

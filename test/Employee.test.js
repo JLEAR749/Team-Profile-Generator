@@ -1,17 +1,23 @@
 const Employee = require("../lib/Employee");
 
 describe("Employee", () => {
-    describe("Initialization", () => {
+    describe("Object", () => {
       it("should return an object containing a 'Name' property when called with the 'new' keyword", () => {
-        const obj = new Employee(0,"Bob");
+        const obj = new Employee("Sally, 1");
   
         expect("name" in obj).toEqual(true);
       });
-      it("'id' should be a number", () => {
-        const obj = new Employee(1, "John Doe", "JD@gmail.com", );
+      
+      it("should be a number", () => {
+        const obj = new Employee("Sally Doe", 1, "Sally.Doe@gmail.com");
   
-        expect(obj.id).toEqual(1);
+        expect(obj.email).toEqual("Sally.Doe@gmail.com");
       });
       
+      it("should be a number", () => {
+        const obj = new Employee("Sally Doe", 1, "Sally.Doe@gmail.com");
+        
+        expect(obj.id).toEqual(1)
+      })
   })
   })

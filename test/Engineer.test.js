@@ -1,21 +1,20 @@
-const Engineer = require("../lib/Engineer");
+const {Engineer} = require("../lib/Engineer");
 
-describe("Engineer", () => {
-  describe("Initialization", () => {
-    it("should return an object containing a 'officeNumber' property when called with the 'new' keyword", () => {
-      const obj = new Engineer(0, "Sally");
+describe("Object", () => {
+  it("creates a Engineer object", () => {
+    const engineer = new Engineer("Mary Chollar", 829, "Mary.Chollar@gmail.com", "Mary.Chollar@github");
+ expect("name" in engineer).toEqual(true)
 
-      expect("name" in obj).toEqual(true);
+      
     });
     it("'id' should be a number", () => {
-      const obj = new Engineer(1, "John Doe", "JD@gmail.com", 201);
+      const obj = new Engineer("Mary Chollar", 829, "Mary.Chollar@gmail.com","Mary.Collar@github" );
 
-      expect(obj.id).toEqual(1);
+      expect(obj.id).toEqual(829);
     });
     it("getgithub method should return a string", () => {
-      const obj = new Engineer(1, "John Doe", "JD@gmail.com", "JohnDoe@github");
+      const obj = new Engineer("Mary Chollar", 829, "Mary.Chollar@gmail.com", "Mary.Chollar@github");
 
-      expect(obj.getGitHub()).toEqual("JohnDoe@github");
+      expect(obj.getGitHub()).toEqual("Mary.Chollar@github");
     });
   })
-})
