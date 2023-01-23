@@ -2,8 +2,10 @@
 
 ## Screenshot
 
-## Video Walk Through 
+assets\screenshot for team profile generator.jpg
 
+## Video Walk Through 
+assets\Team Generator Profile Video.webm
 
   ## Table Of Contents
   * [Description](#description)
@@ -33,7 +35,7 @@ The application has a number of features which include:
 * Interns can have their school input and rendered
   
  ### Installation
- 
+
   
   ### Usage
   Please follow these steps to use the application
