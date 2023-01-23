@@ -1,0 +1,30 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    margin: .5rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.box {border: 1px solid black;}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background: #f5f4f7;
+}
+
+.name-role{
+    display: flex;
+    justify-content: space-around;
+}
+
+.my-team {background-color: #b29ef7;}
+.manager-name {background-color: #ff3535;}
+.intern-name {background-color: #95ff95;}
+.engineer-name {background-color: #fff388;}
+.employee-name {background-color: #f5f4f7;}
+.card-name {background-color: #355C7D;}

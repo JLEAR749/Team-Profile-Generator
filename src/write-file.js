@@ -5,7 +5,7 @@ const writeFile = (fileContent) => {
 		if (err) {
 			console.log(err);
 		} else {
-			console.log('Success!  Your team profile file has been generated!');
+			console.log('Success!  Your team profile file has been generated under the dist folder!');
 		}
 	});
 };

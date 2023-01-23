@@ -5,6 +5,7 @@ const writeFile = require('./src/write-file')
 const { Manager, managerQuestionArr } = require('./lib/Manager');
 const { Engineer, engineerQuestionArr } = require('./lib/Engineer.js');
 const { Intern, internQuestionArr } = require('./lib/Intern.js');
+const template = require('./src/generateHTML');
 
 const teamArray = []
 
@@ -49,12 +50,13 @@ const employeePrompt = () => {
         ]
     }])
         .then(result => {
+            if (result.employeeType === "addManager") {managerQuestions();};
             if (result.employeeType === "addEngineer") { engineerQuestions(); };
             if (result.employeeType === "addIntern") { internQuestions(); };
             if (result.employeeType === "complete") {
-                let HTML = generateHTML(teamArray)
+                let html=template(teamArray)
                 console.log("teamArray")
-                writeFile(HTML);
+                writeFile(html);
             }
         })
 }

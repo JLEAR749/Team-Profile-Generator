@@ -1,6 +1,6 @@
 const {Intern} = require("../lib/Intern");
 
-it ('create a new Intern', ()=> {
+it ('Create a new Intern', ()=> {
   const employee = new Intern('Calvin Doe', 1, 'Calvin.Doe@gmail.com','University of Minnesota');
 
   expect (employee.name).toBe("Calvin Doe");
@@ -10,7 +10,7 @@ it ('create a new Intern', ()=> {
 })
 
 it ('checks all methods for Manager Class', () => {
-  const employee = new Intern('Calvin Doe', 1, 'Calvin.Doe@gmail.com','393');
+  const employee = new Intern('Calvin Doe', 1, 'Calvin.Doe@gmail.com','University of Minnesota');
 
   expect (employee.getName()).toBe(employee.name);
   expect (employee.getId()).toBe(employee.id);

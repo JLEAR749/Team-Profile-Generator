@@ -1,7 +1,7 @@
 const {Manager} = require("../lib/Manager");
 
 it ('Create a new Manager', ()=> {
-  const employee = new Manager('John Doe', 1, 'John.Doe@gmail.com','393');
+  const employee = new Manager('John Doe', 1, 'John.Doe@gmail.com',393);
 
   expect (employee.name).toBe("John Doe");
   expect (employee.id).toEqual (expect.any(Number));
@@ -10,7 +10,7 @@ it ('Create a new Manager', ()=> {
 })
 
 it ('checks all methods for Manager Class', () => {
-  const employee = new Manager('John Doe', 1, 'John.Doe@gmail.com','393');
+  const employee = new Manager('John Doe', 1, 'John.Doe@gmail.com',393);
 
   expect (employee.getName()).toBe(employee.name);
   expect (employee.getId()).toBe(employee.id);
