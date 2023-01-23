@@ -17,25 +17,6 @@ const manager = managerData => {
    `
 }
 
-// Intern Card Template
-const intern = internData => {
-    return `
-    <div id="${internData.getRole()}--card" class="box card">
-     <div class= "box name-role manager-name">
-        <h2>${internData.getName()}</h2>
-        <h3>Role: ${internData.getRole()}</h3>
-    </div>
-    <div class="box employee-info">
-     <ul class="list-group">
-      <li class="list-group-item">ID: ${internData.getId()}</li>
-      <li class="list-group-item">Email: <a href="mailto:${internData.getEmail()}">${internData.getEmail()}</a></li>
-      <li class="list-group-item">School: ${internData.getSchool()}</li>
-     </ul>
-    </div>
-   </div>
-   `
-}
-
 // Engineer Card Template
 const engineer = engineerData => {
     return `
@@ -50,6 +31,24 @@ const engineer = engineerData => {
       <li class="list-group-item">Email: <a href="mailto:${engineerData.getEmail()}">${engineerData.getEmail()}</a></li>
       <li class="list-group-item">GitHub:
       <a href="https://www.github.com/${engineerData.getGitHub()}" target="_blank">www.github.com/${engineerData.getGitHub()}</a></li>
+     </ul>
+    </div>
+   </div>
+   `
+}
+// Intern Card Template
+const intern = internData => {
+    return `
+    <div id="${internData.getRole()}--card" class="box card">
+     <div class= "box name-role manager-name">
+        <h2>${internData.getName()}</h2>
+        <h3>Role: ${internData.getRole()}</h3>
+    </div>
+    <div class="box employee-info">
+     <ul class="list-group">
+      <li class="list-group-item">ID: ${internData.getId()}</li>
+      <li class="list-group-item">Email: <a href="mailto:${internData.getEmail()}">${internData.getEmail()}</a></li>
+      <li class="list-group-item">School: ${internData.getSchool()}</li>
      </ul>
     </div>
    </div>
