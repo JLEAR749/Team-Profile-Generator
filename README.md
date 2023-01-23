@@ -1,10 +1,10 @@
 # Team-Profile-Generator
 
 ## Screenshot
-[]()
+![image](assets\screenshot for team profile generator.jpg)
 
 ## Video Walk Through 
-[]()
+![image](assets\Team Generator Profile Video.webm)
 
   ## Table Of Contents
   * [Description](#description)
