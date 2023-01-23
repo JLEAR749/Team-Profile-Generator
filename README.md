@@ -1,7 +1,6 @@
 # Team-Profile-Generator
 
 ## Screenshot
-file:///C:/Users/16122/Bootcamp_Projects/Team-Profile-Generator/dist/index.html
 
 <<<<<<< HEAD
 assets\screenshot for team profile generator.jpg
@@ -10,8 +9,8 @@ assets\screenshot for team profile generator.jpg
 assets\Team Generator Profile Video.webm
 =======
 ## Video Walk Through 
+<<<<<<< HEAD
 https://drive.google.com/file/d/1g7OHvTJ_uroTJ_j3rOVFvVFILny0cwz2/view
->>>>>>> 3ea4553eea82192969adeba46b706746235377e4
 
   ## Table Of Contents
   * [Description](#description)
