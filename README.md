@@ -1,16 +1,10 @@
 # Team-Profile-Generator
 
 ## Screenshot
-
-<<<<<<< HEAD
-assets\screenshot for team profile generator.jpg
+![image](assets\screenshot for team profile generator.jpg)
 
 ## Video Walk Through 
-assets\Team Generator Profile Video.webm
-=======
-## Video Walk Through 
-<<<<<<< HEAD
-https://drive.google.com/file/d/1g7OHvTJ_uroTJ_j3rOVFvVFILny0cwz2/view
+![video](assets\Team Generator Profile Video.webm)
 
   ## Table Of Contents
   * [Description](#description)
