@@ -1,9 +1,10 @@
 # Team-Profile-Generator
 
 ## Screenshot
+file:///C:/Users/16122/Bootcamp_Projects/Team-Profile-Generator/dist/index.html
 
 ## Video Walk Through 
-
+https://drive.google.com/file/d/1g7OHvTJ_uroTJ_j3rOVFvVFILny0cwz2/view
 
   ## Table Of Contents
   * [Description](#description)
